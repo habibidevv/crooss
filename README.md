@@ -14,3 +14,4 @@ intel i5 5th gen
 Nvidia Geforce GTX 1650 Ti
 4GB RAM
 Windows 10 32bit
+(i pulled these out of my ass)

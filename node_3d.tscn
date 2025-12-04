@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://4evqqu6eea14"]
+
+[ext_resource type="Script" uid="uid://dk4ygxr7d1fs5" path="res://car.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://bea50ir4a7hlv" path="res://node_3d.gd" id="1_noarx"]
+[ext_resource type="Script" uid="uid://b586e067o6l1w" path="res://directional_light_3d.gd" id="3_a0tk4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_noarx"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
+size = Vector3(1, 0.2177124, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jka67"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_noarx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.1, 20)
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="car" type="Node3D" parent="."]
+script = ExtResource("1_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car"]
+mesh = SubResource("BoxMesh_r3fl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car/MeshInstance3D"]
+shape = SubResource("BoxShape3D_jka67")
+
+[node name="car2" type="Node3D" parent="."]
+script = ExtResource("1_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car2"]
+mesh = SubResource("BoxMesh_r3fl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car2/MeshInstance3D"]
+shape = SubResource("BoxShape3D_jka67")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+script = ExtResource("3_a0tk4")
